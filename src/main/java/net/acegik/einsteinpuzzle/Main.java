@@ -95,7 +95,7 @@ public class Main {
 
     public static void printNames(int nameType, int[] a) {
         for (int i = 0; i < a.length; i++) {
-            System.out.format("%10s | ", name_matrix[nameType][a[i]]);
+            System.out.format("%10s | ", getNameOfNumber(a[i], nameType));
         }
         System.out.print("\n");
     }
