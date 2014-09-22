@@ -1,6 +1,30 @@
+/*
+There are 5 houses that are each a different colour.
+There is a person of a different nationality in each house.
+The 5 owners drink a certain drink. They each smoke a certain brand of
+ cigarettes and also have a certain pet. No owner has the same pet, smokes
+ the same brand of cigarettes nor drinks the same drink.
+The question is. “Who has the fish?”
+
+CLUES
+The British man lives in the red house.
+The Swedish man has a dog for a pet.
+The Danish man drinks tea.
+The green house is to the left of the white house.
+The owner of the green house drinks coffee.
+The person that smokes Pall Mall has a bird.
+The owner of the yellow house smokes Dunhill.
+The person that lives in the middle house drinks milk.
+The Norwegian lives in the first house.
+The person that smokes Blend, lives next to the one that has a cat.
+The person that has a horse lives next to the one that smokes Dunhill.
+The one that smokes Bluemaster drinks beer.
+The German smokes Prince.
+The Norwegian lives next to a blue house.
+The person that smokes Blend, has a neighbour that drinks water.
+*/
 package net.acegik.einsteinpuzzle;
 
-import java.util.Map;
 import java.util.HashMap;
 
 /**
@@ -20,7 +44,7 @@ public class Main {
         {"Red", "White", "Yellow", "Green", "Blue"},
         {"Tea", "Coffee", "Milk", "Beer", "Water"},
         {"Dog", "Cat", "Horse", "Fish", "Bird"},
-        {"PallMall", "Dunhill", "Rothmanns", "Winfield", "Marlboro"}
+        {"PallMall", "Dunhill", "Prince", "BlueMaster", "Blend"}
     };
 
     public static HashMap<String, Integer>[] name2number = null;
@@ -147,17 +171,17 @@ public class Main {
                     int ci_dunhill = findIndexOf("Dunhill", N_CI, p);
                     if (ci_dunhill != co_yellow) continue;
 
-                    //12. nguoi hut thuoc hieu winfield thich uong bia
-                    int ci_winfield = findIndexOf("Winfield", N_CI, p);
-                    if (ci_winfield != dr_beer) continue;
+                    //12. nguoi hut thuoc hieu bluemaster thich uong bia
+                    int ci_bluemaster = findIndexOf("BlueMaster", N_CI, p);
+                    if (ci_bluemaster != dr_beer) continue;
 
-                    //15. nguoi hut thuoc Marlboro co hang xom thich uong nuoc
-                    int ci_marlboro = findIndexOf("Marlboro", N_CI, p);
-                    if ((dr_water - ci_marlboro != 1) &&
-                            (dr_water - ci_marlboro != -1)) continue;
+                    //15. nguoi hut thuoc Blend co hang xom thich uong nuoc
+                    int ci_blend = findIndexOf("Blend", N_CI, p);
+                    if ((dr_water - ci_blend != 1) &&
+                            (dr_water - ci_blend != -1)) continue;
 
                     int ci_pallmall = findIndexOf("PallMall", N_CI, p);
-                    int ci_rothmanns = findIndexOf("Rothmanns", N_CI, p);
+                    int ci_prince = findIndexOf("Prince", N_CI, p);
 
                     // Pets
                     p[N_PE] = new int[]{0, 1, 2, 3, 4};
@@ -166,10 +190,10 @@ public class Main {
                         int pe_bird = findIndexOf("Bird", N_PE, p);
                         if (ci_pallmall != pe_bird) continue;
 
-                        //10. nguoi hut thuoc Marlboro o canh nha nguoi nuoi meo
+                        //10. nguoi hut thuoc Blend o canh nha nguoi nuoi meo
                         int pe_cat = findIndexOf("Cat", N_PE, p);
-                        if ((pe_cat - ci_marlboro != 1) &&
-                                (pe_cat - ci_marlboro != -1)) continue;
+                        if ((pe_cat - ci_blend != 1) &&
+                                (pe_cat - ci_blend != -1)) continue;
 
                         //11. nguoi nuoi ngua o canh nha nguoi hut thuoc Dunhill
                         int pe_horse = findIndexOf("Horse", N_PE, p);
@@ -197,9 +221,9 @@ public class Main {
                             int na_dane = findIndexOf("Dane", N_NA, p);
                             if (na_dane != dr_tea) continue;
 
-                            //14. nguoi duc hut thuoc hieu Rothmanns
+                            //14. nguoi duc hut thuoc hieu Prince
                             int na_german = findIndexOf("German", N_NA, p);
-                            if (na_german != ci_rothmanns) continue;
+                            if (na_german != ci_prince) continue;
 
                             count++;
                             System.out.format("Solution #%d:%n", count);
