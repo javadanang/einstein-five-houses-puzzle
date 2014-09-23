@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+            http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="puzzleHelper" class="net.acegik.einsteinpuzzle.PuzzleHelper" />
+    
+    <alias alias="ruleCheckerChain" name="colorsRuleChecker" />
+    
+    <bean id="colorsRuleChecker"
+          class="net.acegik.einsteinpuzzle.checkers.ColorsRuleChecker">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="nextChecker" ref="drinksRuleChecker" />
+    </bean>
+
+    <bean id="drinksRuleChecker"
+          class="net.acegik.einsteinpuzzle.checkers.DrinksRuleChecker">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="nextChecker" ref="cigarettesRuleChecker" />
+    </bean>
+
+    <bean id="cigarettesRuleChecker"
+          class="net.acegik.einsteinpuzzle.checkers.CigarettesRuleChecker">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="nextChecker" ref="petsRuleChecker" />
+    </bean>
+
+    <bean id="petsRuleChecker"
+          class="net.acegik.einsteinpuzzle.checkers.PetsRuleChecker">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="nextChecker" ref="nationalitiesRuleChecker" />
+    </bean>
+    
+    <bean id="nationalitiesRuleChecker"
+          class="net.acegik.einsteinpuzzle.checkers.NationalitiesRuleChecker">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="nextChecker" ref="writeOutputChecker" />
+    </bean>
+    
+    <bean id="writeOutputChecker"
+          class="net.acegik.einsteinpuzzle.checkers.WriteOutputChecker">
+        <property name="helper" ref="puzzleHelper" />
+    </bean>
+</beans>
