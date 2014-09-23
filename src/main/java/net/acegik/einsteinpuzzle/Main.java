@@ -84,19 +84,18 @@ public class Main {
         if (n < 2) return false;
 
         // tìm j là chỉ số lớn nhất mà a[j] < a[j+1]
-        int j = n - 1;
-        for(j=n-1; j>0; j--) if (a[j-1] < a[j]) break;
-        if (j == 0) return false;
-        j--;
+        int j;
+        for(j=n-2; j>=0; j--) if (a[j] < a[j+1]) break;
+        if (j == -1) return false;
 
-        // tìm k
-        int k = n - 1;
+        // tìm k là chỉ số lớn nhất mà a[j] < a[k]
+        int k;
         for(k=n-1; k>j; k--) if (a[k] > a[j]) break;
 
-        // đổi chỗ a[j] và a[k]
+        // hoán đổi giá trị a[j] và a[k]
         int t = a[j]; a[j] = a[k]; a[k] = t;
 
-        // đảo danh sách sau a[j]
+        // đảo danh sách sau a[j] (từ a[j+1] đến hết)
         int s = j + 1;
         int r = n - 1;
 
@@ -206,8 +205,8 @@ public class Main {
                         p[N_NA] = new int[]{0, 1, 2, 3, 4};
                         do {
                             //9. nguoi na-uy o nha dau tien
-                            int na_norwegian = findIndexOf("Norwegian", N_NA, p);
-                            if (na_norwegian != 0) continue;
+                            int na_norwe = findIndexOf("Norwegian", N_NA, p);
+                            if (na_norwe != 0) continue;
 
                             //1. nguoi anh o nha mau do
                             int na_english = findIndexOf("Englishman", N_NA, p);
