@@ -205,8 +205,8 @@ public class Main {
                         p[N_NA] = new int[]{0, 1, 2, 3, 4};
                         do {
                             //9. nguoi na-uy o nha dau tien
-                            int na_norwegian = findIndexOf("Norwegian", N_NA, p);
-                            if (na_norwegian != 0) continue;
+                            int na_norwe = findIndexOf("Norwegian", N_NA, p);
+                            if (na_norwe != 0) continue;
 
                             //1. nguoi anh o nha mau do
                             int na_english = findIndexOf("Englishman", N_NA, p);
