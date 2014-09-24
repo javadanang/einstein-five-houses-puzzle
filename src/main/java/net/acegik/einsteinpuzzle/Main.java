@@ -28,8 +28,8 @@ package net.acegik.einsteinpuzzle;
 import java.util.HashMap;
 
 /**
- * pnhung177
- * 
+ *
+ * @author pnhung177
  */
 public class Main {
 

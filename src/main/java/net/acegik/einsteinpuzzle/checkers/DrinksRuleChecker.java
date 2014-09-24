@@ -4,7 +4,7 @@ import net.acegik.einsteinpuzzle.RuleChecker;
 
 /**
  *
- * @author drupalex
+ * @author pnhung177
  */
 public class DrinksRuleChecker extends RuleChecker {
 

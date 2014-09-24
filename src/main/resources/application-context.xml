@@ -36,11 +36,17 @@
     <bean id="nationalitiesRuleChecker"
           class="net.acegik.einsteinpuzzle.checkers.NationalitiesRuleChecker">
         <property name="helper" ref="puzzleHelper" />
-        <property name="nextChecker" ref="writeOutputChecker" />
+        <property name="nextChecker" ref="resultToFileWriter" />
     </bean>
     
-    <bean id="writeOutputChecker"
-          class="net.acegik.einsteinpuzzle.checkers.WriteOutputChecker">
+    <bean id="resultToConsoleWriter"
+          class="net.acegik.einsteinpuzzle.writers.ResultToConsoleWriter">
         <property name="helper" ref="puzzleHelper" />
+    </bean>
+
+    <bean id="resultToFileWriter"
+          class="net.acegik.einsteinpuzzle.writers.ResultToFileWriter">
+        <property name="helper" ref="puzzleHelper" />
+        <property name="filename" value="target/result.txt" />
     </bean>
 </beans>

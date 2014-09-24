@@ -30,7 +30,7 @@ package net.acegik.einsteinpuzzle;
 
 /**
  *
- * @author drupalex
+ * @author pnhung177
  */
 public abstract class RuleChecker {
 

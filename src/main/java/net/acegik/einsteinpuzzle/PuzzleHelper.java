@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author drupalex
+ * @author pnhung177
  */
 public class PuzzleHelper {
     
